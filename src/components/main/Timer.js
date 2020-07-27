@@ -58,9 +58,7 @@ const Timer = (props) => {
         setTime(timeString)    
     }, delay);
 
-    return (
-        <p>{time}</p>
-    ) 
+    return (<>{time}</>) 
 }
 
 function useInterval (callback, delay) {

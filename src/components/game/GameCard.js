@@ -17,7 +17,11 @@ const GameCard = (props) => {
 
     if (!content.open) {
         return (
-            <Card onClick={flipCard} className={styles.gamecard}></Card>    
+            <Card onClick={flipCard} className={styles.gamecard}>
+                <CardBody>
+                    <CardTitle></CardTitle>
+                </CardBody>
+            </Card>    
         )
     }
 

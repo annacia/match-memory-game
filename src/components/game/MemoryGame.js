@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import GameCard from './GameCard'
 import Timer from '../main/Timer'
-import { CardDeck } from 'reactstrap'
+import { Container, CardDeck } from 'reactstrap'
 import PropTypes from 'prop-types'
+
+import style from './MemoryGame.module.scss'
   
 const MemoryGame = (props) => {
     const { cards, openCard, matchCard, startGame, saveResult, username } = props
@@ -44,19 +46,23 @@ const MemoryGame = (props) => {
     }
 
     return (
-        <div>
-        <Timer stop={end} actionOnStop={saveScore}/>
-        <CardDeck>
-            {cards.map((item, index) => (
-                <GameCard 
-                    key={index} 
-                    content={item} 
-                    openCard={() => flipCard(item.key, index)}
-                />
-            ))}
-        </CardDeck>
+        <Container fluid="sm">
+            <div className={style.timer}>
+                <span>Score: <Timer stop={end} actionOnStop={saveScore}/></span>
+                <span>Username: {username}</span>
+            </div>
+            
+            <Container fluid="sm" className={style.deck}>
+                {cards.map((item, index) => (
+                    <GameCard 
+                        key={index} 
+                        content={item} 
+                        openCard={() => flipCard(item.key, index)}
+                    />
+                ))}
+            </Container>
             {end && <p>Condragulations! You are the winner of this challenge! </p>}
-        </div>
+        </Container>
     )
 }
 

@@ -47,5 +47,12 @@ export const CARDS = [
         name: "Naiade",
         open: false,
         match: false
+    },
+    {
+        key: 7,
+        backgroundColor: "#C37BBBB",
+        name: "Grasi",
+        open: false,
+        match: false
     }
 ]

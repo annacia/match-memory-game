@@ -1,0 +1,23 @@
+.btn {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 400px;
+    display: block;
+    border: 2px solid #088dff;
+    background-color: transparent;
+    color: #088dff;
+    font-size: 20px;
+
+    &:hover{
+        background-color: #088dff;
+        color:#fff;
+        border-color:#088dff
+    }
+}
+
+.text {
+    margin: 40px auto;
+    text-align: center;
+    font-size: 18px;
+    max-width: 400px;
+}

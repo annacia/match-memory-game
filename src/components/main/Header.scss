@@ -1,0 +1,27 @@
+.header {
+    background-color: #6ab18e;
+
+    .title, h1 {
+        color: #fff;
+        font-size: 22px;
+        
+        &:hover {
+            color:#fff;
+            font-weight: bold;
+        }
+    }
+
+    .navbar-light .navbar-nav .nav-link.item {
+        color: #fff;
+        font-size: 20px;
+
+        &:hover {
+            font-weight: bold;
+        }
+    }
+
+    .btn-menu {
+        border: 2px solid #fff;
+        color: #fff;
+    }
+}

@@ -3,6 +3,7 @@ import MemoryGame from '../../containers/MemoryGame'
 
 import { 
     Button, 
+    Container,
     Modal, 
     ModalHeader, 
     ModalBody, 
@@ -12,6 +13,8 @@ import {
     Label, 
     Input 
 } from 'reactstrap';
+
+import style from './GameMenu.module.scss'
 
 const GameMenu = () => {
     const [ modal, setModal ] = useState(false);
@@ -38,8 +41,9 @@ const GameMenu = () => {
     }
 
     return (
-        <div id="game-menu">
-            <Button color="danger" onClick={toggle}>Start Game</Button>
+        <Container id="game-menu">
+            <p className={style.text}>This Match Memory Game was made with ReactJS using Redux, to play this game, click in the link bellow.</p>
+            <Button onClick={toggle} className={style.btn}>Start Game</Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Start Game</ModalHeader>
                 <ModalBody>
@@ -55,7 +59,7 @@ const GameMenu = () => {
                     <Button color="secondary" onClick={toggle}>Cancel</Button>
                 </ModalFooter>
             </Modal>
-        </div>
+        </Container>
     );
 }
 
