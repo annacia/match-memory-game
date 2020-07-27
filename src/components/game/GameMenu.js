@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MemoryMatch from '../../containers/MemoryMatch'
+import MemoryGame from '../../containers/MemoryGame'
 
 import { 
     Button, 
@@ -32,7 +32,7 @@ const GameMenu = () => {
     if (gameStart) {
         return (
             <div id="game">
-                <MemoryMatch username={name}/>
+                <MemoryGame username={name}/>
             </div>
         )
     }

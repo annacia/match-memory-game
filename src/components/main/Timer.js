@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import PropTypes from 'prop-types'
 
 const Timer = (props) => {
     const { stop, actionOnStop } = props
@@ -81,5 +82,9 @@ function useInterval (callback, delay) {
     }, [delay]);
 }
 
+Timer.propTypes = {
+    stop: PropTypes.bool,
+    actionOnStop: PropTypes.func.isRequired
+}
 
 export default Timer

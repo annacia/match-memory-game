@@ -60,13 +60,23 @@ const MemoryGame = (props) => {
     )
 }
 
+const cardsShape = {
+    open: PropTypes.bool,
+    name: PropTypes.string.isRequired,
+    match: PropTypes.bool
+}
+
 MemoryGame.propTypes = {
     cards: PropTypes.arrayOf(
-        PropTypes.shape({
-            key: PropTypes.number.isRequired,
-        }).isRequired
+        PropTypes.shape(
+            cardsShape
+        ).isRequired
     ).isRequired,
-    openCard: PropTypes.func.isRequired
+    openCard: PropTypes.func.isRequired,
+    matchCard: PropTypes.func.isRequired,
+    startGame: PropTypes.func.isRequired,
+    saveResult: PropTypes.func.isRequired,
+    username: PropTypes.string.isRequired
 }
 
 export default MemoryGame;

@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {
+    Card, 
+    CardBody, 
+    CardTitle
+} from 'reactstrap'
 
 import styles from './GameCard.module.scss'
 
-import {
-    Card, CardBody, CardTitle
-} from 'reactstrap'
-  
 const GameCard = (props) => {
     const { content, openCard } = props
 
@@ -29,8 +30,13 @@ const GameCard = (props) => {
     )
 }
 
+const cardShape = {
+    open: PropTypes.bool,
+    name: PropTypes.string.isRequired
+}
+
 GameCard.propTypes = {
-    content: PropTypes.object.isRequired,
+    content: PropTypes.objectOf(PropTypes.shape(cardShape)),
     openCard: PropTypes.func.isRequired
 }
   

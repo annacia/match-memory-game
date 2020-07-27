@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import {
   Collapse,
@@ -23,36 +23,26 @@ const createNavItem = ({ href, text, className, key }) => (
   </NavItem>
 );
 
-export default class Header extends Component {
-  constructor(props) {
-    super(props)
+const Header = () => {
+  const [ isOpen, setIsOpen ] = useState(false)
 
-    this.state = {
-      isOpen: false
-    }
-
-    this.toggle = this.toggle.bind(this);
-  }
-
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    })
+  const toggle = () => {
+    setIsOpen(!isOpen)
   }
   
-  render() {
-    return (
+  return(
       <div>
         <Navbar id="menu" light expand="md">
           <NavbarBrand href="/">Match Memory Game</NavbarBrand>
-          <NavbarToggler className="btn-menu" onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
+          <NavbarToggler className="btn-menu" onClick={toggle} />
+          <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               {links.map(createNavItem)}
             </Nav>
           </Collapse>
         </Navbar>
       </div>
-    );
-  }
+  )
 }
+
+export default Header;
