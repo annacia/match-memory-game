@@ -18,3 +18,9 @@ export const saveResult = (score, name) => ({
     score,
     name
 })
+
+export const getPlayers = (month, year) => ({
+    type: "GET_PLAYERS",
+    month,
+    year
+})

@@ -15,7 +15,7 @@ const userReducer = (state = initialState, action) => {
 
           newState.name = action.name
           newState.score = action.score
-          newState.date = date.getDate() + '-' + month + '-' + date.getFullYear()
+          newState.date = month + '-' + date.getFullYear()
 
           return FirebaseService.pushData('match-memory-game', newState)
         default:
