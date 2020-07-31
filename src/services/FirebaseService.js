@@ -39,4 +39,8 @@ export default class FirebaseService {
         ref.set(objToSubmit);
         return objToSubmit;
     };
+
+    static remove = (node, key) => {
+        return firebaseDatabase.ref(node + '/' + key).remove();
+    };
 }

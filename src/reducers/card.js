@@ -1,6 +1,8 @@
 import {CARDS} from '../mocks/cards'
 
-const initialState = CARDS.concat(CARDS).sort(() => Math.random() - 0.5)
+const sortCards = CARDS.sort(() => Math.random() - 0.5).slice(0,8)
+
+const initialState = sortCards.concat(sortCards).sort(() => Math.random() - 0.5)
 
 const cardReducer = (state = initialState, action) => {
     let newState = [...state]

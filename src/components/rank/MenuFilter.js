@@ -24,7 +24,7 @@ const MenuFilter = (props) => {
     }
 
     const filter = () => {
-        getPlayers(month, year)
+        getPlayers()
     }
 
     return (

@@ -2,8 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {
     Card, 
-    CardBody, 
-    CardTitle
+    CardImg, 
 } from 'reactstrap'
 
 import styles from './GameCard.module.scss'
@@ -18,25 +17,23 @@ const GameCard = (props) => {
     if (!content.open) {
         return (
             <Card onClick={flipCard} className={styles.gamecard}>
-                <CardBody>
-                    <CardTitle></CardTitle>
-                </CardBody>
+                <CardImg top width="100%" src="/img/cards/bg.jpg" alt="Match Memory Game" />
             </Card>    
         )
     }
 
+    let img = "/img/cards/"+content.img
+
     return (
         <Card onClick={flipCard} className={styles.gamecard}>
-            <CardBody>
-                <CardTitle>{content.name}</CardTitle>
-            </CardBody>
+            <CardImg top width="100%" src={img} alt="Match Memory Game" />
         </Card>
     )
 }
 
 const cardShape = {
     open: PropTypes.bool,
-    name: PropTypes.string.isRequired
+    img: PropTypes.string.isRequired
 }
 
 GameCard.propTypes = {

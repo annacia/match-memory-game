@@ -2,12 +2,12 @@
     text-align: left;
     font-size: 20px;
     height: 45px;
-    border: 2px solid #088dff;
+    border: 2px solid #96470a;
     border-radius: 10px;
     max-width: 466px;
     padding: 6px 0;
     margin: 15px auto;
-    color: #088dff;
+    color: #96470a;
     font-weight: bold;
 
     span {
@@ -23,4 +23,8 @@
     max-width: 510px;
     text-align: center;
     margin-top: 25px;
+}
+
+.alerttext {
+    text-align: center;
 }

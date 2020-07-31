@@ -3,7 +3,7 @@ import { getPlayers } from '../actions'
 import MenuFilter from '../components/rank/MenuFilter'
 
 const mapDispatchToProps = dispatch => ({
-    getPlayers: (month, year) => dispatch(getPlayers(month, year))
+    getPlayers: () => dispatch(getPlayers())
 })
 
 const mapStateToProps = store => ({

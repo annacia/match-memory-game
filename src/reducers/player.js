@@ -1,15 +1,20 @@
 import FirebaseService from '../services/FirebaseService'
 
 const playerReducer = (state = {players: []}, action) => {
+    let newState = {...state}
     switch (action.type) {
         case 'GET_PLAYERS':
-            let newState = {...state}
-            let date = action.month + '-' + action.year
-            FirebaseService.getDataListWhere('match-memory-game', "date", date, (items) => {
-                newState.players = items
-                return newState
-            }, 10)
+            newState = {...state}
+            newState.players = action.payload
+            
             return newState
+
+        case 'SAVE_RECORD':
+            newState = {...state}
+            newState.players = action.payload
+
+            console.log(newState)
+            return newState 
         default:
           return state
     }
