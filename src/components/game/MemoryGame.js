@@ -7,10 +7,12 @@ import PropTypes from 'prop-types'
 import style from './MemoryGame.module.scss'
   
 const MemoryGame = (props) => {
-    const { cards, openCard, matchCard, startGame, username, saveRecord } = props
+    const { cards, players, openCard, matchCard, startGame, username, saveRecord, getPlayers, removeRecord } = props
 
     const [ start, setStart ] = useState(false)
     const [ end, setEnd ] = useState(false)
+    const [ isSubmit, setIsSubmit ] = useState(false)
+    const [ current, setCurrent ] = useState({score: "", name: "", total: ""})
 
     useEffect(() => {
         if (!start) {
@@ -32,7 +34,28 @@ const MemoryGame = (props) => {
             setEnd(true)
         }
 
-    }, [start, startGame, cards])
+        if (players.length <= 10 && isSubmit) {
+            saveRecord(current.score, current.name, current.total)
+            setIsSubmit(false)
+        }
+
+        if (isSubmit && players.length === 10) {
+            let desc = players.slice()
+            desc = desc.sort((a, b) => {return a.total-b.total})
+            let newRank = desc.slice()
+
+            desc = desc.reverse()
+            
+            if (current.total < desc[0]['total']) {
+                newRank = newRank.reverse()
+                removeRecord('match-memory-game', newRank[0]["key"])
+                saveRecord(current.score, current.username, current.total)
+            }
+            setIsSubmit(false)
+        }
+
+
+    }, [start, startGame, cards, players, current, isSubmit, removeRecord, saveRecord])
 
     const flipCard = (key, index) => {
         openCard(key, index)
@@ -42,10 +65,13 @@ const MemoryGame = (props) => {
     }
 
     const saveScore = (score) => {
+        getPlayers()
+        
         let timeArray = score.split(":")
         let total = (parseInt(timeArray[0]) * 3600) + (parseInt(timeArray[1]) * 60) + parseInt(timeArray[2])
+        setCurrent({score: score, name: username, total: total})
         
-        saveRecord(score, username, total)
+        setIsSubmit(true)
     }
 
     return (

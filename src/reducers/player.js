@@ -1,19 +1,12 @@
-import FirebaseService from '../services/FirebaseService'
-
-const playerReducer = (state = {players: []}, action) => {
-    let newState = {...state}
+const playerReducer = (state = [], action) => {
+    let newState = []
     switch (action.type) {
         case 'GET_PLAYERS':
-            newState = {...state}
-            newState.players = action.payload
-            
+            newState = action.payload
             return newState
 
         case 'SAVE_RECORD':
-            newState = {...state}
-            newState.players = action.payload
-
-            console.log(newState)
+            newState = action.payload
             return newState 
         default:
           return state

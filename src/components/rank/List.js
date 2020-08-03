@@ -8,6 +8,7 @@ const List = (props) => {
         <Table borderless>
             <thead>
                 <tr>
+                    <th>Rank</th>
                     <th>Player</th>
                     <th>Score</th>
                 </tr>
@@ -15,6 +16,7 @@ const List = (props) => {
             <tbody>
                 {data.map((item, index) => (
                     <tr key={index}>
+                        <td>#{index+1}</td>
                         <td>{item.name}</td>
                         <td>{item.score}</td>
                     </tr>
