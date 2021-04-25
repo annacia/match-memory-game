@@ -14,7 +14,7 @@ import {
     Input 
 } from 'reactstrap';
 
-import style from './GameMenu.module.scss'
+import style from '../../assets/style/main.module.scss'
 
 const GameMenu = () => {
     const [ modal, setModal ] = useState(false);
@@ -42,7 +42,7 @@ const GameMenu = () => {
 
     return (
         <Container id="game-menu">
-            <p className={style.text}>This Match Memory Game was made with ReactJS using Redux, to play this game, click in the link bellow.</p>
+            <p className={style.text}>This Match Memory Game was made with ReactJS using Redux and Redux Thunk with Firebase, to play this game, click in the link bellow.</p>
             <Button onClick={toggle} className={style.btn}>Start Game</Button>
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>Start Game</ModalHeader>
@@ -50,7 +50,7 @@ const GameMenu = () => {
                     <Form>
                         <FormGroup>
                             <Label for="name">Your Name:</Label>
-                            <Input type="text" name="name" id="name" placeholder="Insert your name" onChange={(e) => setName(e.target.value)} />
+                            <Input type="text" name="name" id="name" maxLength="12" placeholder="Insert your name" onChange={(e) => setName(e.target.value)} />
                         </FormGroup>
                     </Form>
                 </ModalBody>

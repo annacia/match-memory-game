@@ -1,26 +1,31 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import GameCard from './GameCard'
 import Timer from '../main/Timer'
 import { Container, Alert } from 'reactstrap'
 import PropTypes from 'prop-types'
 
-import style from './MemoryGame.module.scss'
+import style from '../../assets/style/game.module.scss'
   
 const MemoryGame = (props) => {
-    const { cards, players, openCard, matchCard, startGame, username, saveRecord, getPlayers, removeRecord } = props
+    const { cards, players, openCard, matchCard, beforeStart, startGame, username, saveRecord, getPlayers, removeRecord } = props
 
+    const [ cardShowed, setCardShowed ] = useState(false)
     const [ start, setStart ] = useState(false)
     const [ end, setEnd ] = useState(false)
     const [ isSubmit, setIsSubmit ] = useState(false)
     const [ current, setCurrent ] = useState({score: "", name: "", total: ""})
 
-    useEffect(() => {
-        if (!start) {
+    const prepareGame = useCallback(() => {
+        beforeStart()
+        setCardShowed(true)
+        setTimeout(() => {
             setStart(true)
             startGame()
             setEnd(false)
-        }
+        }, 5000)
+      }, [beforeStart, startGame])
 
+    const verifyCards = useCallback(() => {
         let lengthCards = cards.length
         let matchCards = []
 
@@ -33,13 +38,15 @@ const MemoryGame = (props) => {
         if (lengthCards === matchCards.length) {
             setEnd(true)
         }
+    }, [cards])
 
-        if (players.length <= 10 && isSubmit) {
+    const submitScore = useCallback(() => {
+        if (players.length < 5) {
             saveRecord(current.score, current.name, current.total)
             setIsSubmit(false)
         }
 
-        if (isSubmit && players.length === 10) {
+        if (isSubmit && players.length === 5) {
             let desc = players.slice()
             desc = desc.sort((a, b) => {return a.total-b.total})
             let newRank = desc.slice()
@@ -47,15 +54,42 @@ const MemoryGame = (props) => {
             desc = desc.reverse()
             
             if (current.total < desc[0]['total']) {
+                console.log(newRank)
                 newRank = newRank.reverse()
                 removeRecord('match-memory-game', newRank[0]["key"])
-                saveRecord(current.score, current.username, current.total)
+                saveRecord(current.score, current.name, current.total)
             }
             setIsSubmit(false)
         }
+    }, [current, isSubmit, players, removeRecord, saveRecord])
 
+    useEffect(() => {
+        if (!cardShowed) {
+            prepareGame()
+        }
 
-    }, [start, startGame, cards, players, current, isSubmit, removeRecord, saveRecord])
+        if (start && players.length === 0) {
+            getPlayers();
+        }
+        
+        if (start) {
+            verifyCards()
+
+            if (isSubmit) {
+                submitScore()
+            }
+        }
+
+    }, [
+        players,
+        cardShowed,
+        prepareGame,
+        start,
+        verifyCards,
+        isSubmit,
+        getPlayers,
+        submitScore
+    ])
 
     const flipCard = (key, index) => {
         openCard(key, index)
@@ -65,8 +99,6 @@ const MemoryGame = (props) => {
     }
 
     const saveScore = (score) => {
-        getPlayers()
-        
         let timeArray = score.split(":")
         let total = (parseInt(timeArray[0]) * 3600) + (parseInt(timeArray[1]) * 60) + parseInt(timeArray[2])
         setCurrent({score: score, name: username, total: total})
@@ -77,7 +109,8 @@ const MemoryGame = (props) => {
     return (
         <Container fluid="sm">
             <div className={style.timer}>
-                <span>Score: <Timer stop={end} actionOnStop={saveScore}/></span>
+                {!start && <span>Score: 00:00:00</span>}
+                {start && <span>Score: <Timer stop={end} actionOnStop={saveScore}/></span>}
                 <span>Username: {username}</span>
             </div>
             {end && <Alert color="success" className={style.alerttext}>
@@ -100,7 +133,8 @@ const MemoryGame = (props) => {
 const cardsShape = {
     open: PropTypes.bool,
     img: PropTypes.string.isRequired,
-    match: PropTypes.bool
+    match: PropTypes.bool,
+    key: PropTypes.number
 }
 
 MemoryGame.propTypes = {

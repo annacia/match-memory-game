@@ -5,7 +5,7 @@ import {
     CardImg, 
 } from 'reactstrap'
 
-import styles from './GameCard.module.scss'
+import style from '../../assets/style/game.module.scss'
 
 const GameCard = (props) => {
     const { content, openCard } = props
@@ -16,7 +16,7 @@ const GameCard = (props) => {
 
     if (!content.open) {
         return (
-            <Card onClick={flipCard} className={styles.gamecard}>
+            <Card onClick={flipCard} className={style.gamecard}>
                 <CardImg top width="100%" src="/img/cards/bg.jpg" alt="Match Memory Game" />
             </Card>    
         )
@@ -25,7 +25,7 @@ const GameCard = (props) => {
     let img = "/img/cards/"+content.img
 
     return (
-        <Card onClick={flipCard} className={styles.gamecard}>
+        <Card onClick={flipCard} className={style.gamecard}>
             <CardImg top width="100%" src={img} alt="Match Memory Game" />
         </Card>
     )
@@ -37,7 +37,7 @@ const cardShape = {
 }
 
 GameCard.propTypes = {
-    content: PropTypes.objectOf(PropTypes.shape(cardShape)),
+    content: PropTypes.shape(cardShape),
     openCard: PropTypes.func.isRequired
 }
   

@@ -11,6 +11,10 @@ export const matchCard = key => ({
     key
 })
 
+export const beforeStart = () => ({
+    type: "BEFORE_START"
+})
+
 export const startGame = () => ({
     type: "START_GAME"
 })

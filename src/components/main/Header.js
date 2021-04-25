@@ -11,7 +11,7 @@ import {
   NavLink,
 } from 'reactstrap'
 
-import './Header.scss'
+import style from '../../assets/style/main.module.scss'
 
 const links = [
   { href: '/game', text: 'Game', key: 1 },
@@ -20,8 +20,8 @@ const links = [
 
 const createNavItem = ({ href, text, key }) => (
     <NavItem key={key}>
-    <NavLink to={href} tag={Link} className="item">
-        {text}
+    <NavLink to={href} tag={Link}>
+        <span className={style.item}>{text}</span>
     </NavLink>
   </NavItem>
 );
@@ -34,11 +34,11 @@ const Header = () => {
   }
   
   return(
-      <div className="header">
+      <div className={style.header}>
         <Container fluid={true}>
           <Navbar id="menu" light expand="md">
-            <NavbarBrand href="/" className="title"><h1>Match Memory Game</h1></NavbarBrand>
-            <NavbarToggler className="btn-menu" onClick={toggle} />
+            <NavbarBrand href="/" className={style.title}><h1>Match Memory Game</h1></NavbarBrand>
+            <NavbarToggler className={style.btnmenu} onClick={toggle} />
             <Collapse isOpen={isOpen} navbar>
               <Nav className="ml-auto" navbar>
                 {links.map(createNavItem)}

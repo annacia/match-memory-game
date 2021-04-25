@@ -45,12 +45,18 @@ const cardReducer = (state = initialState, action) => {
             return state.map(card =>
                 (card.open === true && card.match === false) ? { ...card, open: false } : card
             );
+        case 'BEFORE_START':
+            return newState.map(card =>
+                {
+                    return {...card, open: true, match: false}
+                }
+            ).sort(() => Math.random() - 0.5)
         case 'START_GAME':
             return newState.map(card =>
                 {
                     return {...card, open: false, match: false}
                 }
-            ).sort(() => Math.random() - 0.5)
+            )
         default:
             return state
     }
