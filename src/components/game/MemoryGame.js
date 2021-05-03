@@ -46,7 +46,6 @@ const MemoryGame = (props) => {
             setIsSubmit(false)
         }
 
-        console.log(isSubmit && players.length === 5);
         if (isSubmit && players.length === 5) {
             let desc = players.slice()
             desc = desc.sort((a, b) => {return a.total-b.total})
@@ -69,13 +68,15 @@ const MemoryGame = (props) => {
             prepareGame()
         }
 
-        console.log(players);
+        if (start && players.length === 0) {
+            getPlayers();
+        }
+        
         if (start) {
             verifyCards()
 
             if (isSubmit) {
-                getPlayers();
-                submitScore();
+                submitScore()
             }
         }
 
