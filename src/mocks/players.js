@@ -1,7 +1,7 @@
 export const PLAYERS = [
     {
         "date" : "6-2020",
-        "name" : "Laura Caix„o",
+        "name" : "Laura Caix√£o",
         "score" : "00:00:23"
     },
     {
@@ -11,7 +11,7 @@ export const PLAYERS = [
     },
     {
         "date" : "6-2020",
-        "name" : "Laura Caix„o",
+        "name" : "Laura Caix√£o",
         "score" : "00:00:23"
     },
     {
