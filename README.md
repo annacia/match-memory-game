@@ -39,7 +39,9 @@ A simple Match Memory Game I made to learn more about Redux and Redux Thunk.
 
 ## 📺 Demo
 
-![demo](./public/readme/screen.gif)
+<p align="center">
+  <img src="./public/readme/screen.gif" width="650" height="auto" />
+</p>
 
 ****
 <div id='requirements'/>
