@@ -64,7 +64,7 @@ https://github.com/annacia/match-memory-game
 2. Access the directory of the project
 
 ```sh
-cd jotto_teste
+cd match-memory-game
 ```
 
 3. Install all dependencies
