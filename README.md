@@ -1,68 +1,80 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Match Memory Game 🎮
+A simple Match Memory Game I made to learn more about Redux and Redux Thunk.
 
-## Available Scripts
+****
+## 🔖 Summary
 
-In the project directory, you can run:
+1. [Functionalities](#functionalities)
+2. [Tools](#tools)
+3. [Demo](#demo)
+3. [Requirements](#requirements)
+4. [Run](#run)
 
-### `yarn start`
+****
+<div id='functionalities'/>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🔌 Functionalities
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- Play match memory game;
+- Saves players' scores;
+- Shows the ranking of the best players.
 
-### `yarn test`
+****
+<div id='tools'/>
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🔧 Tools
 
-### `yarn build`
+- [x] ReactJS;
+- [x] React Router;
+- [x] PropTypes;
+- [x] Hooks;
+- [x] Redux;
+- [x] Redux Thunk;
+- [x] Reactstrap;
+- [x] Sass;
+- [x] Firebase;
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+****
+<div id='demo'/>
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## 📺 Demo
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<p align="center">
+  <img src="./public/readme/screen.gif" width="650" height="auto" />
+</p>
 
-### `yarn eject`
+****
+<div id='requirements'/>
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## ⚠ Requirements
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+You will need Node.js and Yarn (or NPM) installed.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+****
+<div id='run'/>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 💻 Run
 
-## Learn More
+1. Clone this repository
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```sh
+https://github.com/annacia/match-memory-game
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Access the directory of the project
 
-### Code Splitting
+```sh
+cd jotto_teste
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+3. Install all dependencies
 
-### Analyzing the Bundle Size
+```sh
+yarn install
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+4. Run the project
 
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```sh
+yarn start
+```
